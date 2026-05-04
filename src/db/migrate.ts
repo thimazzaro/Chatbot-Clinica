@@ -1,5 +1,5 @@
 ﻿import Database from 'better-sqlite3';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
 console.log('⏳ Rodando migrations...');
@@ -14,7 +14,10 @@ const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 
-const sqlPath = join(process.cwd(), 'src', 'db', 'migrations', '0000_initial.sql');
+// Em dev (tsx) o SQL está em src/; em produção (Docker) está em dist/
+const devPath = join(process.cwd(), 'src', 'db', 'migrations', '0000_initial.sql');
+const prodPath = join(process.cwd(), 'dist', 'db', 'migrations', '0000_initial.sql');
+const sqlPath = existsSync(devPath) ? devPath : prodPath;
 const sql = readFileSync(sqlPath, 'utf-8');
 
 // Executa cada statement separadamente

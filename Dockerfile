@@ -33,4 +33,5 @@ EXPOSE 3000
 
 # dumb-init garante propagação correta de sinais para graceful shutdown
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "dist/index.js"]
+# Roda migrations antes de iniciar o servidor
+CMD ["sh", "-c", "node dist/db/migrate.js && node dist/index.js"]
