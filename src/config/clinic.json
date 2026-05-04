@@ -1,0 +1,58 @@
+{
+  "name": "Clínica Bella Estética",
+  "receptionist_whatsapp": "5511999999999",
+  "address": "Rua das Flores, 123 - São Paulo, SP",
+  "maps_link": "https://maps.google.com/?q=Rua+das+Flores+123+Sao+Paulo",
+  "working_hours": {
+    "seg_sex": "09:00 - 19:00",
+    "sabado": "09:00 - 14:00",
+    "domingo": "Fechado"
+  },
+  "procedures": [
+    {
+      "id": "limpeza-pele",
+      "name": "Limpeza de pele",
+      "description": "Limpeza profunda com extração e hidratação. Ideal para todos os tipos de pele.",
+      "duration_minutes": 60,
+      "price": 180
+    },
+    {
+      "id": "botox",
+      "name": "Botox",
+      "description": "Aplicação de toxina botulínica para suavizar linhas de expressão.",
+      "duration_minutes": 30,
+      "price": 350
+    },
+    {
+      "id": "peeling",
+      "name": "Peeling químico",
+      "description": "Renovação celular com ácidos controlados. Resultado em até 7 dias.",
+      "duration_minutes": 45,
+      "price": 220
+    },
+    {
+      "id": "drenagem-facial",
+      "name": "Drenagem facial",
+      "description": "Técnica manual para redução de inchaço e melhora do contorno facial.",
+      "duration_minutes": 50,
+      "price": 150
+    },
+    {
+      "id": "led",
+      "name": "Fototerapia LED",
+      "description": "Tratamento com luz LED para rejuvenescimento e controle da acne.",
+      "duration_minutes": 40,
+      "price": 120
+    }
+  ],
+  "promotions": [
+    "Pacote 5 limpezas de pele por R$750 (economize R$150)",
+    "Primeira consulta de avaliação gratuita"
+  ],
+  "appointment_slots": {
+    "start_time": "09:00",
+    "end_time": "18:00",
+    "interval_minutes": 60,
+    "working_days": [1, 2, 3, 4, 5, 6]
+  }
+}
