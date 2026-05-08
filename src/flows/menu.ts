@@ -1,4 +1,4 @@
-import { sendButtonMessage } from '../services/meta-api.js';
+import { sendListMessage } from '../services/meta-api.js';
 import { saveSession, type SessionData } from '../models/session.js';
 import clinic from '../config/clinic.json';
 
@@ -7,17 +7,24 @@ export async function sendMainMenu(phoneNumber: string, session: SessionData, gr
     ? `Olá! Bem-vinda à ${clinic.name} ✨`
     : `Como posso te ajudar? ✨`;
 
-  const body = 'Como posso te ajudar hoje?';
+  const sections = [
+    {
+      title: 'Opções',
+      rows: [
+        { id: 'menu:agendar',   title: 'Agendar consulta',       description: 'Marque seu horário' },
+        { id: 'menu:precos',    title: 'Tabela de preços',        description: 'Veja valores e procedimentos' },
+        { id: 'menu:gerenciar', title: 'Gerenciar agendamento',   description: 'Cancelar ou remarcar' },
+        { id: 'menu:duvidas',   title: 'Dúvidas',                 description: 'Converse com nossa assistente Sofia' },
+      ],
+    },
+  ];
 
-  await sendButtonMessage(
+  await sendListMessage(
     phoneNumber,
-    body,
-    [
-      { id: 'menu:agendar', title: 'Agendar consulta' },
-      { id: 'menu:duvidas', title: 'Dúvidas' },
-      { id: 'menu:precos', title: 'Preços' },
-    ],
     header,
+    'Como posso te ajudar hoje?',
+    'Ver opções',
+    sections,
     'Responda a qualquer momento para recomeçar.',
   );
 

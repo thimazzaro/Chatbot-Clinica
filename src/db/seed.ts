@@ -54,7 +54,7 @@ async function seed() {
   }
 
   console.log('✅ Seed concluído!');
-  console.log(`   - ${2} slots bloqueados criados`);
+  console.log(`   - 4 slots bloqueados criados`);
   console.log(`   - 1 contato de exemplo criado`);
   console.log(`   - 1 agendamento de exemplo criado`);
   sqlite.close();

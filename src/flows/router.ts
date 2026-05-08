@@ -101,6 +101,10 @@ export async function routeMessage(msg: IncomingMessage): Promise<void> {
     await startPricing(phoneNumber, session);
     return;
   }
+  if (buttonId === 'menu:gerenciar') {
+    await startCancellation(phoneNumber, session);
+    return;
+  }
 
   // ─── Roteamento por estado da sessão ─────────────────────────────────
   if (session.flow.startsWith('scheduling:')) {

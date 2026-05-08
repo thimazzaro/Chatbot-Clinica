@@ -19,6 +19,7 @@ RUN apk add --no-cache dumb-init
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV TZ=America/Sao_Paulo
 
 COPY package*.json ./
 RUN npm ci --omit=dev
