@@ -57,8 +57,11 @@ async function callGraphApi(path: string, body: unknown, attempt = 1): Promise<v
     throw networkErr;
   }
 
+  // LOG TEMPORÁRIO: mostra resposta da Meta para diagnóstico
+  const raw = await response.text();
+  logger.info({ status: response.status, body: raw }, 'Meta API resposta');
+
   if (!response.ok) {
-    const raw = await response.text();
     let code: number | undefined;
     try {
       const parsed = JSON.parse(raw) as { error?: { code?: number } };
@@ -79,6 +82,7 @@ async function callGraphApi(path: string, body: unknown, attempt = 1): Promise<v
     }
 
     logger.error({ status: response.status, code, body: raw }, msg);
+
     throw new Error(msg);
   }
 }
