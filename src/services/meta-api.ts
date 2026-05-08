@@ -12,7 +12,7 @@ import {
 } from '../utils/message-builder.js';
 import { logger } from './logger.js';
 
-const GRAPH_URL = `https://graph.facebook.com/v19.0/${env.WHATSAPP_PHONE_ID}`;
+const GRAPH_URL = `https://graph.facebook.com/v21.0/${env.WHATSAPP_PHONE_ID}`;
 const INTERVAL_MS = Math.ceil(1000 / env.RATE_LIMIT_MSG_PER_SECOND);
 
 // ─── Meta error codes ────────────────────────────────────────────────────────
