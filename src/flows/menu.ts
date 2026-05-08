@@ -1,4 +1,4 @@
-import { sendListMessage } from '../services/meta-api.js';
+import { sendTextMessage } from '../services/meta-api.js';
 import { saveSession, type SessionData } from '../models/session.js';
 import clinic from '../config/clinic.json';
 
@@ -7,26 +7,8 @@ export async function sendMainMenu(phoneNumber: string, session: SessionData, gr
     ? `Olá! Bem-vinda à ${clinic.name} ✨`
     : `Como posso te ajudar? ✨`;
 
-  const sections = [
-    {
-      title: 'Opções',
-      rows: [
-        { id: 'menu:agendar',   title: 'Agendar consulta',       description: 'Marque seu horário' },
-        { id: 'menu:precos',    title: 'Tabela de preços',        description: 'Veja valores e procedimentos' },
-        { id: 'menu:gerenciar', title: 'Gerenciar agendamento',   description: 'Cancelar ou remarcar' },
-        { id: 'menu:duvidas',   title: 'Dúvidas',                 description: 'Converse com nossa assistente Sofia' },
-      ],
-    },
-  ];
-
-  await sendListMessage(
-    phoneNumber,
-    header,
-    'Como posso te ajudar hoje?',
-    'Ver opções',
-    sections,
-    'Responda a qualquer momento para recomeçar.',
-  );
+  // TESTE: texto simples para diagnosticar entrega
+  await sendTextMessage(phoneNumber, `${header}\n\nComo posso te ajudar hoje?\n1️⃣ Agendar consulta\n2️⃣ Tabela de preços\n3️⃣ Gerenciar agendamento\n4️⃣ Dúvidas`);
 
   session.flow = 'idle';
   session.step = 'menu_sent';
